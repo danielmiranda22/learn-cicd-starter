@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -93,6 +94,8 @@ func main() {
 		Handler:           router,
 		ReadHeaderTimeout: 5 * 60, // 5 minutes
 	}
+
+	log.Printf("Serving on port: %s", strconv.Quote(port))
 
 	log.Fatal(srv.ListenAndServe())
 }
